@@ -1,2 +1,1 @@
-# front-api
-Front-end em React da API com link no readme
+➡ [Curso](https://www.udemy.com/course/curso-de-javascript-moderno-do-basico-ao-avancado)
