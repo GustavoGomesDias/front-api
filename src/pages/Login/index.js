@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { Container } from '../../styles/GlobalStyles';
 import { Title } from './styled';
+import * as exampleActions from '../../store/modules/example/actions';
 
 export default function Login() {
   // useDispatch dispara ações pro redux ouvir
@@ -11,9 +12,7 @@ export default function Login() {
   function handleClick(e) {
     e.preventDefault();
 
-    dispatch({
-      type: 'BOTAO_CLICADO',
-    });
+    dispatch(exampleActions.buttonClick());
   }
 
   return (
