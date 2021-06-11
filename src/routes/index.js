@@ -3,18 +3,21 @@ import { Switch } from 'react-router-dom';
 
 import MyRoute from './MyRoute';
 import Login from '../pages/Login';
+import Aluno from '../pages/Aluno';
+import Alunos from '../pages/Alunos';
+import Images from '../pages/Images';
+import Register from '../pages/Register';
 import Page404 from '../pages/Page404';
-
-/*
- * As rotas tem que tá entre BrowserRouter
- * Switch permite apenas que uma rota seja acessada por vez
- * exact => só acessa o componente se acessar especificamente aquela rota
- */
 
 export default function Routes() {
   return (
     <Switch>
-      <MyRoute exact path="/" component={Login} isClosed />
+      <MyRoute exact path="/" component={Alunos} isClosed={false} />
+      <MyRoute exact path="/aluno/:id/edit" component={Aluno} isClosed />
+      <MyRoute exact path="/aluno" component={Aluno} isClosed />
+      <MyRoute exact path="/images/:id" component={Images} isClosed />
+      <MyRoute exact path="/login" component={Login} isClosed={false} />
+      <MyRoute exact path="/register" component={Register} isClosed={false} />
       <MyRoute path="*" component={Page404} />
     </Switch>
   );
