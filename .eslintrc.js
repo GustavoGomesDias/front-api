@@ -25,5 +25,6 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'no-console': 0,
+    'no-useless-return': 'off',
   },
 };
