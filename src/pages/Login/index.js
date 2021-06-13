@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
+import { useDispatch } from 'react-redux';
 
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
+import * as actions from '../../store/modules/auth/actions';
 
 export default function Login() {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -25,6 +28,8 @@ export default function Login() {
     }
 
     if (formErrors) return;
+
+    dispatch(actions.loginRequest({ email, password }));
   };
 
   return (
