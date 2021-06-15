@@ -14,11 +14,17 @@ export default function reducer(state = initialState, action) {
       newState.isLoggedIn = true;
       newState.token = action.payload.token;
       newState.user = action.payload.user;
+      newState.isLoading = false;
       return state;
     }
 
     case types.LOGIN_FAILURE: {
       const newState = { ...initialState };
+      return newState;
+    }
+    case types.LOGIN_REQUEST: {
+      const newState = { ...initialState };
+      newState.isLoading = true;
       return newState;
     }
 

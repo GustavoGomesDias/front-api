@@ -7,11 +7,13 @@ import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
 import axios from '../../services/axios';
 import history from '../../services/history';
+import Loading from '../../components/Loading';
 
 export default function Register() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,7 +21,6 @@ export default function Register() {
     let formErrors = false;
 
     if (nome.length < 3 || nome.length > 255) {
-      console.log(nome);
       formErrors = true;
       toast.error('Nome deve ter entre 3 e 255 caracteres');
     }
@@ -36,6 +37,8 @@ export default function Register() {
 
     if (formErrors) return;
 
+    setIsLoading(true);
+
     try {
       await axios.post('/users', {
         nome,
@@ -43,16 +46,19 @@ export default function Register() {
         email,
       });
       toast.success('Cadastrado com sucesso.');
-      history.push('/');
+      setIsLoading(false);
+      history.push('/login');
     } catch (err) {
       const errors = get(err, 'response.data.errors', []);
 
       errors.map((error) => toast.error(error));
+      setIsLoading(false);
     }
   }
 
   return (
     <Container>
+      <Loading isLoading={isLoading} />
       <h1>Crie sua conta</h1>
       <Form onSubmit={handleSubmit}>
         <label htmlFor="nome">

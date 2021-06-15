@@ -23,7 +23,7 @@ function* loginRequest({ payload }) {
   }
 }
 
-function persistTrhydrate({ payload }) {
+function persistRehydrate({ payload }) {
   const token = get(payload, 'auth.token', '');
 
   if (!token) return;
@@ -33,5 +33,5 @@ function persistTrhydrate({ payload }) {
 
 export default all([
   takeLatest(types.LOGIN_REQUEST, loginRequest),
-  takeLatest(types.PERSIST_REHYDRATE, persistTrhydrate),
+  takeLatest(types.PERSIST_REHYDRATE, persistRehydrate),
 ]);
