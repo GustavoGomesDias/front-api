@@ -39,5 +39,5 @@ function registerRequest({ payload }) {
 export default all([
   takeLatest(types.LOGIN_REQUEST, loginRequest),
   takeLatest(types.PERSIST_REHYDRATE, persistRehydrate),
-  takeLatest(types.REGISTER_REHYDRATE, registerRequest),
+  takeLatest(types.REGISTER_REQUEST, registerRequest),
 ]);
